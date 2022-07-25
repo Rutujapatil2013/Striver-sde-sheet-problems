@@ -1,1 +1,66 @@
+1.Reverse linked list
+
+#Iterative method
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+    
+class Linkedlist:
+    def __init__(self):
+        self.head=None
+        
+    def  reverse(self):
+        prev=None
+        curr=self.head
+        while(curr is not None):
+            next=curr.next
+            curr.next=prev
+            prev=curr
+            curr=next
+        self.head=prev
+        
+    def push(self,new_data):
+        new_node=Node(new_data)
+        new_node.next=self.head
+        self.head=new_node
+        
+    def printlist(self):
+        temp=self.head
+        while(temp):
+            print(temp.data)
+            temp=temp.next
+            
+#Driver unicode
+lst=Linkedlist()
+lst.push(1)
+lst.push(2)
+lst.push(3)
+lst.push(4)
+lst.push(5)
+print("Given Linkedlist is  ")
+lst.printlist()
+print("\nReversed linked list is: ")
+lst.reverse()
+lst.printlist()
+
+output:
+Given Linkedlist is  
+5
+4
+3
+2
+1
+
+Reversed linked list is: 
+1
+2
+3
+4
+5
+Time Complexity: O(n) 
+Auxiliary Space: O(1)
+________________________________________________________________________________________
+#Recursive method
+
 
