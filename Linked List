@@ -314,6 +314,87 @@ The middle element is [4]
 The middle element is [3]
 Time Complexity: O(N/2), As we are traversing the list only once.
 Auxiliary Space: O(1), As constant extra space is used.
+__________________________________________________________________________
+class Node:
+    def __init__(self,val):
+        self.val=val
+        self.next=None
+        
+class Linkedlist:
+    
+    def push(self,head,new_data):
+        new_node=Node(new_data)
+        new_node.next=head
+        head=new_node
+        return head
+        
+    def printnode(self,head):
+        temp=head
+        while(temp!=None):
+            print('%d->' %temp.val, end="")
+            temp=temp.next
+        print("NULL")
+        
+        
+    def get_length(self,head):
+        temp=head
+        length=0
+        while(temp!=None):
+            length+=1
+            temp=temp.next
+        return length
+        
+    def middle_node(self,head):
+        if head!=None:
+            length=self.get_length(head)
+            temp=head
+            midindex=length//2
+            while(midindex!=0):
+                temp=temp.next
+                midindex-=1
+            print('The middle element is [%d]' % temp.val)
+    
+    def after_mid(self,head):
+        if head!=None:
+            length = self.get_length(head)
+            temp = head
+            midindex = length//2
+            for i in range(midindex):
+                temp = temp.next
+            print('After Mid elements are : ',end = ' ')
+            while temp!=None:
+                print(temp.val,end='->')
+                temp = temp.next
+            print('\n')
+#DRiver unicode
+head = None
+temp = Linkedlist()
+for i in range(5, 0, -1):
+    head = temp.push(head, i)
+    temp.printnode(head)
+    temp.middle_node(head)
+    temp.after_mid(head)
+    
+Output:
+5->NULL
+The middle element is [5]
+After Mid elements are :  5->
+
+4->5->NULL
+The middle element is [5]
+After Mid elements are :  5->
+
+3->4->5->NULL
+The middle element is [4]
+After Mid elements are :  4->5->
+
+2->3->4->5->NULL
+The middle element is [4]
+After Mid elements are :  4->5->
+
+1->2->3->4->5->NULL
+The middle element is [3]
+After Mid elements are :  3->4->5->
 
 #########################################################################################
 3.
