@@ -182,6 +182,139 @@ Time Complexity: O(N)
 Auxiliary Space: O(N)
     Space is used to store the nodes in the stack.
 ###################################################################################################
-2.
+2. Middle element of linked list
 
+class Node:
+    def __init__(self,val):
+        self.val=val
+        self.next=None
+        
+class Linkedlist:
+    # def __init__(self):
+    #     self.head=None
+    
+    def push(self,head,new_data):
+        new_node=Node(new_data)
+        new_node.next=head
+        head=new_node
+        return head
+        
+    def printnode(self,head):
+        temp=head
+        while(temp!=None):
+            print('%d->' %temp.val, end="")
+            temp=temp.next
+        print("NULL")
+        
+        
+    def get_length(self,head):
+        temp=head
+        length=0
+        while(temp!=None):
+            length+=1
+            temp=temp.next
+        return length
+        
+    def middle_node(self,head):
+        if head!=None:
+            length=self.get_length(head)
+            temp=head
+            midindex=length//2
+            while(midindex!=0):
+                temp=temp.next
+                midindex-=1
+            print('The middle element is [%d]' % temp.val)
+            
+#DRiver unicode
+head = None
+temp = Linkedlist()
+for i in range(5, 0, -1):
+    head = temp.push(head, i)
+    temp.printnode(head)
+    temp.middle_node(head)
+    
+Output
+5->NULL
+The middle element is [5]
+4->5->NULL
+The middle element is [5]
+3->4->5->NULL
+The middle element is [4]
+2->3->4->5->NULL
+The middle element is [4]
+1->2->3->4->5->NULL
+The middle element is [3]
+
+Time Complexity: O(n) where n is no of nodes in linked list
+Auxiliary Space: O(1)
+________________________________________________________________________
+
+class Node:
+   
+    # Function to initialise the node object
+    def __init__(self, data):
+        self.data = data  # Assign data
+        self.next = None  # Initialize next as null
+
+class LinkedList:
+   
+    # Function to initialize head
+    def __init__(self):
+        self.head = None
+ 
+    # Function to insert a new node at the beginning 
+    def push(self, new_data): 
+        new_node = Node(new_data) 
+        new_node.next = self.head 
+        self.head = new_node
+ 
+    # Print the linked list
+    def printList(self):
+        node = self.head
+        while node:
+            print(str(node.data) + "->", end="")
+            node = node.next
+        print("NULL")
+ 
+    # Function that returns middle.
+    def printMiddle(self):
+        # Initialize two pointers, one will go one step a time (slow), another two at a time (fast)
+        slow = self.head
+        fast = self.head
+ 
+        # Iterate till fast's next is null (fast reaches end)
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+         
+        # return the slow's data, which would be the middle element.
+        print("The middle element is ", slow.data)
+ 
+# Code execution starts here
+if __name__=='__main__':
+   
+    # Start with the empty list
+    llist = LinkedList()
+   
+    for i in range(5, 0, -1):
+        llist.push(i)
+        llist.printList()
+        llist.printMiddle()
+        
+Output:
+5->NULL
+The middle element is [5]
+4->5->NULL
+The middle element is [5]
+3->4->5->NULL
+The middle element is [4]
+2->3->4->5->NULL
+The middle element is [4]
+1->2->3->4->5->NULL
+The middle element is [3]
+Time Complexity: O(N/2), As we are traversing the list only once.
+Auxiliary Space: O(1), As constant extra space is used.
+
+#########################################################################################
+3.
 
